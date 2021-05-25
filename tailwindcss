@@ -1,0 +1,33 @@
+vue项目安装tailwindcss：
+    1.npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+        错误：Error: PostCSS plugin tailwindcss requires PostCSS 8.
+            如果遇到上述错误，请卸载 Tailwind 并使用兼容性版本重新安装
+            npm uninstall tailwindcss postcss autoprefixer
+            npm install tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+    2.接下来，生成您的 tailwind.config.js 和 postcss.config.js 文件：
+        npx tailwindcss init -p
+    3.src目录新建app.css,添加代码：
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    4.入口文件main.js引入：
+        import './app.css'
+
+生产环境优化：
+    tailwind.config.js文件：
+        purge: [
+            './public/index.html',
+            './src/**/*.{vue,js,ts,jsx,tsx}'
+        ],
+    打包时就会只打包使用的css
+
+
+postcss-nested:类似sass嵌套配置：
+    npm包安装后，postcss.config.js:
+        module.exports = {
+            plugins: [
+                require('tailwindcss'),
+                require('postcss-nested'), // 需放在autoprefixer之前
+                require('autoprefixer'),
+            ],
+        }
