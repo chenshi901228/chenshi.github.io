@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            height: 300px;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+        @keyframes textScroll {
+            from{
+                transform: translateY(0);
+            }
+            to{
+                transform: translateY(var(--y));
+            }
+        }
+        ul{
+            animation: textScroll var(--du) linear infinite;
+            background-color: pink;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+            margin-bottom: 4px;
+        }
+        .wrap:hover ul{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Repellendus omnis similique fugiat!</li>
+            <li>Pariatur ab labore fuga.</li>
+            <li>Mollitia ipsa eos illo?</li>
+            <li>Eum eaque quasi quidem?</li>
+            <li>Asperiores minus ut necessitatibus!</li>
+            <li>Temporibus ad praesentium est?</li>
+            <li>Vero quis quidem explicabo.</li>
+            <li>Accusantium aliquam minus quidem.</li>
+            <li>Officiis praesentium error ea?</li>
+            <li>Labore debitis magni tempora.</li>
+            <li>Eum nostrum sed rem?</li>
+            <li>Itaque magni quibusdam eveniet!</li>
+            <li>Minima dolorem dolorum corporis.</li>
+            <li>Illo ipsum ab dicta.</li>
+            <li>Illo atque doloremque eligendi?</li>
+            <li>Debitis, similique exercitationem? Aut?</li>
+            <li>Cum quibusdam illum voluptatum?</li>
+            <li>Tenetur quod praesentium facilis?</li>
+            <li>Sint iste neque in!</li>
+            <li>Perspiciatis ipsum culpa delectus.</li>
+            <li>Nulla harum eius cumque.</li>
+            <li>Similique beatae nulla consequuntur!</li>
+            <li>Perspiciatis asperiores soluta libero?</li>
+            <li>Possimus aperiam assumenda sapiente?</li>
+            <li>A suscipit corporis nam?</li>
+            <li>Nam, tempora. Similique, commodi.</li>
+            <li>Itaque eligendi sed totam.</li>
+            <li>Unde eum esse iure!</li>
+            <li>Delectus repudiandae velit excepturi?</li>
+            <li>Consectetur dolores aliquid dolor.</li>
+            <li>Totam facere a ipsa?</li>
+            <li>Doloremque perferendis perspiciatis vitae.</li>
+            <li>Asperiores impedit laboriosam in.</li>
+            <li>Adipisci iure ad eligendi.</li>
+            <li>Ullam voluptate repudiandae aperiam!</li>
+            <li>Quod perspiciatis a suscipit?</li>
+            <li>Deleniti molestiae distinctio quidem.</li>
+            <li>Hic molestias commodi fugit?</li>
+            <li>Veritatis quod modi necessitatibus!</li>
+            <li>Saepe qui id aliquam?</li>
+            <li>Facilis sequi repudiandae adipisci?</li>
+            <li>Deserunt deleniti rerum expedita.</li>
+            <li>Nobis magnam maiores odit?</li>
+            <li>Quo consequatur recusandae deserunt?</li>
+            <li>Perferendis fugiat impedit voluptates.</li>
+            <li>Dolor exercitationem aut omnis?</li>
+            <li>Rem illo harum quaerat?</li>
+            <li>Eaque cupiditate adipisci deleniti!</li>
+            <li>Fugit commodi assumenda vitae.</li>
+        </ul>
+    </div>
+    <script>
+        let dataList = document.querySelector("ul")
+        let listHeight = dataList.getBoundingClientRect().height
+        dataList.style.setProperty("--y",(-Math.ceil(listHeight)+300)+"px")
+        dataList.style.setProperty("--du",((Math.ceil(listHeight)-300)/20)/2 + "s")
+    </script>
+</body>
+</html>

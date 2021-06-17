@@ -1,0 +1,53 @@
+vue2中taildwindcss的安装使用：
+    1.兼容性问题，不支持postcss8的安装
+        npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+    2.生成postcss.config.js和tailwind.config.js
+        npx tailwindcss init -p
+    3.src下新建index.css
+        添加代码：
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+    4.main.js中引入index.css
+        import './index.css'
+    5.生产环境优化：tailwindcss的打包：
+        tailwind.config.js配置：
+            purge: [
+                    //用到tailwindcss的相关文件
+                './public/index.html',   
+                './src/**/*.{vue,js,ts,jsx,tsx}'
+            ],
+        执行打包程序之后就会剔除没有用到的tailwindcss以缩小css打包大小
+    6.安装postcss-nested以支持类似sass的嵌套变量
+        a.npm install postcss-nested or yarn add postcss-nested
+        b.postcss.config.js中添加配置：
+            module.exports = {
+                plugins: [
+                    require('tailwindcss'),
+                    require('postcss-nested'), // 需放在autoprefixer之前
+                    require('autoprefixer'),
+                ],
+            }
+        tips:如果Error：需要postcss8支持，postcss-nested降版本
+            yarn add postcss-nested@4.2.3
+
+postcss使用：
+    1.类似sass写法
+        <style lang="postcss">
+            .about {
+                h1 {
+                    @apply text-2xl cursor-pointer;
+                }
+                p{
+                    @apply text-pink-400
+                    text-2xl;
+                }
+            }
+        </style>
+    2.变量：
+        定义：html {
+           --color: red;
+        }
+        使用：.about {
+            border: 1px solid var(--color);
+        }
